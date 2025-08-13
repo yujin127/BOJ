@@ -1,19 +1,32 @@
 package bronze;
 
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class 일곱난쟁이_2309 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Set<Integer> set = new TreeSet<>();
-		for (int i=0; i<9; i++) {
-			set.add(sc.nextInt());
+		int[] arr = new int[9];
+		int sum = 0;
+		for (int i = 0; i < 9; i++) {
+			arr[i] = sc.nextInt();
+			sum += arr[i];
 		}
-		Object[] tmp = set.toArray();
-		for (int i=0; i<7; i++) {
-			System.out.println(tmp[i]);
+		Arrays.sort(arr);
+		int p1=0;
+		int p2=0;
+		for (int i = 0; i < 9; i++) {
+			for (int j = i + 1; j < 9; j++) {
+				if (sum - arr[i] - arr[j] == 100) {
+					p1 = arr[i];
+					p2 = arr[j];
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < 9; i++) {
+			if (arr[i] != p1 && arr[i] != p2)
+				System.out.println(arr[i]);
 		}
 	}
 }
