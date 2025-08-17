@@ -11,6 +11,6 @@ public class 시험감독_13458 {
 		int n = Integer.parseInt(br.readLine());
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int[] a = new int[n];
-		for (int i=0; iM<)
+//		for (int i=0; iM<)
 	}
 }
