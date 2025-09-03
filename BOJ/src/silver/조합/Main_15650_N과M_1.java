@@ -5,36 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_15650_N과M {
+public class Main_15650_N과M_1 {
 	
 	static int n;
 	static int m;
 	static int[] arr;
-	static int[] result;
+	static int[] sel;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
-		arr = new int[n+1];
-		result = new int[m];
-		for (int i=0; i<n; i++) arr[i] = i+1;
+		arr = new int[n];
+		for (int i=1; i<=n; i++) arr[i-1] = i;
+		sel = new int[m];
 		comb(0, 0);
 	}
-	
+
 	static void comb(int idx, int sidx) {
-		// end condition
-		if (sidx == m) {
+		if (sidx==m) {
 			for (int i=0; i<m; i++) {
-				System.out.print(result[i]+" ");
+				System.out.print(sel[i]+" ");
 			}
 			System.out.println();
 			return;
 		}
-		// recursion part
 		for (int i=idx; i<=n-m+sidx; i++) {
-			result[sidx] = arr[i];
+			sel[sidx] = arr[i];
 			comb(i+1, sidx+1);
 		}
 	}
