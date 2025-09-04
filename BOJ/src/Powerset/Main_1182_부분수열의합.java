@@ -1,4 +1,4 @@
-package silver.부분집합;
+package Powerset;
 
 import java.io.BufferedReader;
 import java.io.IOException;

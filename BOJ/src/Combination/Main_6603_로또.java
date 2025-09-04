@@ -1,4 +1,4 @@
-package silver.조합;
+package Combination;
 
 import java.io.BufferedReader;
 import java.io.IOException;
