@@ -5,33 +5,38 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_2606_바이러스 {
-	static int n, m;
-	static boolean[] visited;
+public class Main_11724_연결요소의개수 {
+	static int n, m, ans;
 	static int[][] arr;
-	static int cnt = 0;
-	
+	static boolean[] visited;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		n = Integer.parseInt(br.readLine());
-		m = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		n = Integer.parseInt(st.nextToken());
+		m = Integer.parseInt(st.nextToken());
 		arr = new int[n+1][n+1];
 		for (int i=0; i<m; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
+			st = new StringTokenizer(br.readLine());
 			int v1 = Integer.parseInt(st.nextToken());
 			int v2 = Integer.parseInt(st.nextToken());
-			arr[v1][v2] = 1;
-			arr[v2][v1] = 1;
+			arr[v1][v2] ++;
+			arr[v2][v1] ++;
 		}
+
 		visited = new boolean[n+1];
-		dfs(1);
-		System.out.println(cnt);
-	}
-	static void dfs(int v) {
-		visited[v] = true;
+		ans = 0;
 		for (int i=1; i<=n; i++) {
-			if (!visited[i] && arr[v][i]==1) {
-				cnt++;
+			if (!visited[i]) {
+				dfs(i);
+				ans ++;
+			}
+		}
+		System.out.println(ans);
+	}
+	static void dfs(int start) {
+		visited[start] = true;
+		for (int i=1; i<=n; i++) {
+			if (!visited[i] && arr[start][i]==1) {
 				dfs(i);
 			}
 		}
